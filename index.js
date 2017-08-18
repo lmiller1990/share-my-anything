@@ -1,12 +1,9 @@
-const AWS = require('aws-sdk')
-const express = require('express')
-const multer = require('multer')
-const fs = require('fs')
-
-AWS.config.loadFromPath('./config.json')
+import express from 'express'
+import multer from 'multer'
+import fs from 'fs'
+import s3 from './config/setup-aws'
 
 const app = express()
-const s3 = new AWS.S3({ apiVersion: '2006-03-01'  })
 
 const storage = multer.diskStorage({
 	destination: './files',
