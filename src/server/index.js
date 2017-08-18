@@ -1,9 +1,18 @@
 import express from 'express'
 import multer from 'multer'
 import fs from 'fs'
-import s3 from './config/setup-aws'
+import s3 from '../config/setup-aws'
+
+import { APP_NAME, STATIC_PATH, WEB_PORT } from '../shared/config'
+import { isProd } from '../shared/util'
+import renderApp from './render-app'
 
 const app = express()
+
+// declarative files
+app.use(STATIC_PATH, express.static('public')) 
+// generated files
+app.use(STATIC_PATH, express.static('dist'))
 
 const storage = multer.diskStorage({
 	destination: './files',
@@ -14,10 +23,8 @@ const storage = multer.diskStorage({
 
 const uploader = multer({ storage: storage })
 
-app.set("view engine", "ejs")
-
 app.get('/', (req, res) => {
-	res.render('index')
+	res.send(renderApp(APP_NAME))
 })
 
 function uploadToS3(filename, buffer) {
@@ -40,11 +47,10 @@ app.post('/images', uploader.single('image'), (req, res, next) => {
 			next(err)
 		} else {
 			uploadToS3(file.originalname, data)
-			.then(() => next(res.render('index')))
+			.then(() => next(res.redirect('/')))
 		}
 	})
 })
 
-app.use(express.static('public'))
 
-app.listen(3000, () => console.log('Listening.'))
+app.listen(WEB_PORT, () => console.log('Listening.'))

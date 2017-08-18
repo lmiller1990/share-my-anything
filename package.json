@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "start": "babel-node src/index.js"
+    "start": "yarn dev:start",
+		"dev:start": "nodemon --ignore lib,files --exec babel-node src/server/index.js",
+		"test": "jest --coverage"
   },
   "dependencies": {
     "aws-sdk": "^2.100.0",
