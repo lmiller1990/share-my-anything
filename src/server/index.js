@@ -53,4 +53,4 @@ app.post('/images', uploader.single('image'), (req, res, next) => {
 })
 
 
-app.listen(WEB_PORT, () => console.log('Listening.'))
+app.listen(WEB_PORT, () => console.log(`Server running on ${WEB_PORT} ${isProd ? 'production' : 'development'} \nRun dev:wds is another console.`))
