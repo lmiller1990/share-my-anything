@@ -4,6 +4,7 @@ const multer = require('multer')
 const fs = require('fs')
 
 AWS.config.loadFromPath('./config.json')
+
 const app = express()
 const s3 = new AWS.S3({ apiVersion: '2006-03-01'  })
 
@@ -23,26 +24,28 @@ app.get('/', (req, res) => {
 })
 
 function uploadToS3(filename, buffer) {
-	s3.putObject({ Bucket: 'share-my-anything', Key: filename, Body: buffer}, (resp) => {
-		console.log(arguments, 'ok')
-		// return next(res.redirect('/'))
+	return new Promise((resolve, reject) => {
+		s3.putObject({ Bucket: 'share-my-anything', Key: filename, Body: buffer}, (err, data) => {
+			if (err) {
+				reject(err)
+			} else {
+				resolve(data)
+			}
+		})
 	})
 }
 
-app.post('/images', uploader.single('image'), (req, res) => {
+app.post('/images', uploader.single('image'), (req, res, next) => {
 	const file = req.file
-	const meta = req.body
-
-	console.log('file', file, meta)
 
 	const imageFromFile = fs.readFile(`./files/${file.originalname}`, (err, data) => {
 		if (err) {
-			console.log('Error', err)
+			next(err)
 		} else {
 			uploadToS3(file.originalname, data)
+			.then(() => next(res.render('index')))
 		}
 	})
-
 })
 
 app.use(express.static('public'))
