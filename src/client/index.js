@@ -1,5 +1,13 @@
 import 'babel-polyfill'
 
+import Vue from 'vue'
+
+import App from './App'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 
-document.querySelector(APP_CONTAINER_SELECTOR).innerHTML = '<h1>Hello Vue Webpack!</h1>'
+new Vue({
+	el: '#app',
+	render: h => h(App),
+	template: '<App />',
+	components: { App }
+})
