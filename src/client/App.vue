@@ -1,6 +1,6 @@
 <template>
 	<div>
-		Hello Vue!
+		Hello Vue with hot reload!
 	</div>
 </template>
 

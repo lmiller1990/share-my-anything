@@ -1,4 +1,5 @@
 import path from 'path'
+import webpack from 'webpack'
 
 import { WDS_PORT } from './src/shared/config'
 import { isProd } from './src/shared/util'
@@ -31,6 +32,13 @@ export default {
 		extensions: ['.js', '.vue']
 	},
 	devServer: {
-		port: WDS_PORT
-	}
+		port: WDS_PORT,
+		hot: true,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+		}
+	},
+	plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	]
 }
