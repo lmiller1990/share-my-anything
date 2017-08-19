@@ -3,3 +3,5 @@ config.json
 files/
 /lib/
 /dist
+yarn-error.log
+coverage/

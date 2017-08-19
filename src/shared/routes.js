@@ -1,1 +1,1 @@
-export const uploadImageEndpoint = (filename, buffer) => `/images/create`
+export const createImageEndpointRoute = () => `/images/create`
