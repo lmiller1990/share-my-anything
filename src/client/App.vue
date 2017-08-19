@@ -1,12 +1,17 @@
 <template>
 	<div>
-		Hello Vue with hot reload!
+		Hello Vue with hot reload!!
+		<ImageUploader />
 	</div>
 </template>
 
 <script>
+	import ImageUploader from './components/ImageUploader'
 	export default {
-		name: 'app'
+		name: 'app',
+		components: {
+			ImageUploader
+		}
 	}
 </script>
 

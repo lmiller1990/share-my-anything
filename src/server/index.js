@@ -3,14 +3,21 @@ import multer from 'multer'
 import fs from 'fs'
 import s3 from '../config/setup-aws'
 
+import { uploadImageEndpoint } from '../shared/routes'
+
 import { APP_NAME, STATIC_PATH, WEB_PORT } from '../shared/config'
 import { isProd } from '../shared/util'
 import renderApp from './render-app'
 
 const app = express()
 
+app.get(uploadImageEndpoint(), (req, res) => {
+	res.json({ msg: 'Hello from server' })
+})
+
 // declarative files
 app.use(STATIC_PATH, express.static('public')) 
+
 // generated files
 app.use(STATIC_PATH, express.static('dist'))
 
@@ -39,7 +46,7 @@ function uploadToS3(filename, buffer) {
 	})
 }
 
-app.post('/images', uploader.single('image'), (req, res, next) => {
+app.post('/images/create', uploader.single('image'), (req, res, next) => {
 	const file = req.file
 
 	const imageFromFile = fs.readFile(`./files/${file.originalname}`, (err, data) => {
