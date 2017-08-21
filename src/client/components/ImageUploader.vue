@@ -1,9 +1,14 @@
 <template>
   <div>
-		<form enctype="multipart/form-data">
-			<input type="file" name="image" @change="onImageChange">
-			<input type="button" @click="save" value="Submit">
-		</form>
+		<div class="upload container">
+			<h4 class="upload form">
+				Share
+			</h4>
+			<form enctype="multipart/form-data">
+				<input type="file" name="image" @change="onImageChange">
+				<input type="button" @click="save" value="Submit">
+			</form>
+		</div>
   </div>
 </template>
 

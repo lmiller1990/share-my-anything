@@ -1,8 +1,18 @@
 import jest from 'jest'
-import { methods } from './ImageUploader.vue'
+import ImageUploader from './ImageUploader.vue'
+import Vue from 'vue'
 
-describe('onImageChange', () => {
-	it('returns a form data object with filled in fields', () => {
-		console.log(methods)
+const doTest = (Component) => {
+	const vm = new Vue({
+		el: document.createElement('div'),
+		render: h => h(Component)
+	})
+
+	expect(vm.$el.querySelector('.upload.form').textContent.trim()).toEqual('Share')
+}
+
+describe('ImageUploader.vue', () => {
+	it('should render correctly', () => {
+		doTest(ImageUploader)
 	})
 })

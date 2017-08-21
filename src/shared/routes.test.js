@@ -1,6 +1,6 @@
 import jest from 'jest'
-import { uploadImageEndpoint } from './routes'
+import { createImageEndpointRoute } from './routes'
 
 test('uploadImageEndpoint', () => {
-	expect(uploadImageEndpoint()).toBe('/images/create')
+	expect(createImageEndpointRoute()).toBe('/images/create')
 })
