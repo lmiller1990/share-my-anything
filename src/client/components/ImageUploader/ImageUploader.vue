@@ -6,7 +6,7 @@
 			</h4>
 			<form enctype="multipart/form-data">
 				<input type="file" name="image" @change="onImageChange">
-				<input type="button" @click="save" value="Submit">
+				<input type="button" id="save-button" @click="save" value="Submit">
 			</form>
 		</div>
   </div>
@@ -14,7 +14,7 @@
 
 <script>
 	import 'isomorphic-fetch'
-	import { createImageEndpointRoute } from '../../shared/routes'
+	import { createImageEndpointRoute } from '../../../shared/routes'
 
   export default {
     name: 'ImageUploader',
@@ -42,6 +42,7 @@
 			},
 
 			save() {
+				console.log('SSAVEEEE')
 				fetch(createImageEndpointRoute(), { 
 					method: 'POST', 
 					body: this.formData

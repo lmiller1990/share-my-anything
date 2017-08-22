@@ -6,7 +6,7 @@
 </template>
 
 <script>
-	import ImageUploader from './components/ImageUploader'
+	import ImageUploader from './components/ImageUploader/ImageUploader'
 	export default {
 		name: 'app',
 		components: {

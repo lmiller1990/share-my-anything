@@ -13,10 +13,12 @@
 		"express": "^4.15.4",
 		"isomorphic-fetch": "^2.2.1",
 		"multer": "^1.3.0",
+		"sinon": "^3.2.1",
 		"vue": "^2.4.2",
 		"vue-template-compiler": "^2.4.2"
 	},
 	"devDependencies": {
+		"avoriaz": "^3.3.1",
 		"babel-cli": "^6.26.0",
 		"babel-core": "^6.26.0",
 		"babel-jest": "^20.0.3",
