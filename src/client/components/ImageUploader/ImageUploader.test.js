@@ -1,19 +1,6 @@
 import ImageUploader from './ImageUploader.vue'
+import { shallow } from 'avoriaz'
 import Vue from 'vue'
-
-const mountAndClick = (Component) => {
-	const ctor = Vue.extend(Component)
-
-	const vm = new ctor()
-	vm.$mount
-
-	vm.save = jest.fn()
-
-	console.log(vm)
-	vm.$el.querySelector('#save-button').click()
-
-	expect(vm.save.mock.calls.length).toBe(1)
-}
 
 describe('ImageUploader.vue', () => {
 	/*it('should render a h4 correctly', () => {
@@ -22,8 +9,12 @@ describe('ImageUploader.vue', () => {
 	})*/
 
 	it('save should return a 200 status', () => {
-		expect.assertions(1)
+		const wrapper = shallow(ImageUploader)
+		const saveMock = jest.fn()
+		wrapper.vm.save = saveMock
+		wrapper.update()
 
-		mountAndClick(ImageUploader)
+		wrapper.find('#save-button')[0].trigger('click')
+		expect(saveMock.mock.calls.length).toBe(1)
 	})
 })
