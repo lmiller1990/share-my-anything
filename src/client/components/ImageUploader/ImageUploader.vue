@@ -5,7 +5,7 @@
 				Share
 			</h4>
 			<form enctype="multipart/form-data">
-				<input type="file" name="image" @change="onImageChange">
+				<input type="file" id="image-button" name="image" @change="onImageChange">
 				<input type="button" id="save-button" @click="save" value="Submit">
 			</form>
 		</div>
@@ -42,7 +42,6 @@
 			},
 
 			save() {
-				console.log('SSAVEEEE')
 				fetch(createImageEndpointRoute(), { 
 					method: 'POST', 
 					body: this.formData

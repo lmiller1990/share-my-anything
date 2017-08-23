@@ -2,13 +2,18 @@ import fs from 'fs'
 
 import { APP_NAME } from '../shared/config'
 import { uploadToS3, uploader } from './middleware/imageUploadMiddleware'
-import { createImageEndpointRoute } from '../shared/routes'
+import { createImageEndpointRoute, getImagesEndpointRoute } from '../shared/routes'
 
 import renderApp from './render-app'
 
 export default (app) => {
 	app.get('/', (req, res) => {
 		res.send(renderApp(APP_NAME))
+	})
+
+	app.get(getImagesEndpointRoute(), (req, res) => {
+		console.log(req.params.category)
+		res.sendStatus(200)
 	})
 
 	app.post(createImageEndpointRoute(), uploader, (req, res, next) => {

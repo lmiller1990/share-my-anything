@@ -12,7 +12,7 @@ const uploader = multer({ storage: storage }).single('image')
 
 const uploadToS3 = (filename, buffer) => {
 	return new Promise((resolve, reject) => {
-		s3.putObject({ Bucket: 'share-my-anything', Key: filename, Body: buffer}, (err, data) => {
+		s3.putObject({ Bucket: 'share-my-anything', Key: 'cats/' + filename, Body: buffer}, (err, data) => {
 			if (err) {
 				reject(err)
 			} else {

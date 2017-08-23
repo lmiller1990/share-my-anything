@@ -4,4 +4,4 @@ files/
 /lib/
 /dist
 yarn-error.log
-coverage/
+/coverage/
