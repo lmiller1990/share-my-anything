@@ -8,6 +8,7 @@
 	},
 	"dependencies": {
 		"aws-sdk": "^2.100.0",
+		"axios": "^0.16.2",
 		"babel-polyfill": "^6.26.0",
 		"ejs": "^2.5.7",
 		"express": "^4.15.4",
@@ -19,6 +20,7 @@
 		"vue": "^2.4.2",
 		"vue-image-loader": "^1.0.4",
 		"vue-img-loader": "^0.2.1",
+		"vue-router": "^2.7.0",
 		"vue-template-compiler": "^2.4.2"
 	},
 	"devDependencies": {

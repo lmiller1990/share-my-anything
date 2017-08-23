@@ -12,7 +12,6 @@ export default (app) => {
 	})
 
 	app.get(getImagesEndpointRoute(), (req, res) => {
-		console.log(req.params.category)
 		res.sendStatus(200)
 	})
 

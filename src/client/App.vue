@@ -1,8 +1,8 @@
 <template>
-	<div>
-		Hello Vue with hot reload!!
-		<ImageUploader />
-		<SharedImage :uri="'...'" :size="175" />
+	<div class="main container">
+		<!--<ImageUploader />
+		<SharedImage :uri="'...'" :size="175" />-->
+		<router-view></router-view>
 	</div>
 </template>
 
@@ -20,4 +20,8 @@
 </script>
 
 <style>
+.main.container {
+	padding-left: 2em;
+	padding-right: 2em;
+}
 </style>
