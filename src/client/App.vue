@@ -1,21 +1,12 @@
 <template>
 	<div class="main container">
-		<!--<ImageUploader />
-		<SharedImage :uri="'...'" :size="175" />-->
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
-	import ImageUploader from './components/ImageUploader/ImageUploader'
-	import SharedImage from './components/SharedImage/SharedImage'
 	export default {
-		name: 'app',
-
-		components: {
-			ImageUploader,
-			SharedImage,
-		}
+		name: 'app'
 	}
 </script>
 

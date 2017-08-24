@@ -2,10 +2,11 @@
   <div>
 		<div class="upload container">
 			<h4 class="upload form">
-				Share
+				Img
 			</h4>
 			<form enctype="multipart/form-data">
 				<input type="file" id="image-button" name="image" @change="onImageChange">
+				<input type="text" v-model="category" name="category">
 				<input type="button" id="save-button" @click="save" value="Submit">
 			</form>
 		</div>
@@ -22,7 +23,8 @@
 		data() {
 			return {
 				imageChosen: false,
-				formData: null
+				formData: null,
+				category: null
 			}
 		},
 
@@ -42,6 +44,8 @@
 			},
 
 			save() {
+				this.formData.append('category', this.category)
+
 				fetch(createImageEndpointRoute(), { 
 					method: 'POST', 
 					body: this.formData

@@ -10,9 +10,13 @@ const storage = multer.diskStorage({
 
 const uploader = multer({ storage: storage }).single('image')
 
-const uploadToS3 = (filename, buffer) => {
+const uploadToS3 = (filename, category, buffer) => {
 	return new Promise((resolve, reject) => {
-		s3.putObject({ Bucket: 'share-my-anything', Key: 'cats/' + filename, Body: buffer}, (err, data) => {
+		s3.putObject({ 
+			Bucket: 'share-my-anything', 
+			Key: `${category}/${filename}`, 
+			Body: buffer
+		}, (err, data) => {
 			if (err) {
 				reject(err)
 			} else {

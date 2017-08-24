@@ -17,6 +17,11 @@ describe('Home.vue', () => {
 		expect(wrapper.vm.enterHandler.mock.calls.length).toBe(0)
 	})
 
+	it('reveals an upload button when a category is input', () => {
+		const wrapper = mount(Home)
+
+	})
+
 	it('matches the snapshot', () => {
 		const wrapper = mount(Home)
 		expect(wrapper.$el).toMatchSnapshot()

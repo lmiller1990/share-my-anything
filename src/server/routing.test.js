@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import 'babel-polyfill'
 import app from './app'
 import request from 'supertest'

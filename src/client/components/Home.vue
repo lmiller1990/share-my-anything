@@ -4,11 +4,13 @@
 			Share my
 		</div>
 		<input v-model="query" placeholder="cat" id="query-input" @keyup.enter="enterHandler">
+		<ImageUploader />
   </div>
 </template>
 
 <script>
 	import axios from 'axios'
+	import ImageUploader from './ImageUploader/ImageUploader.vue'
 	import { getImagesEndpointRoute } from '../../shared/routes'
 
   export default {
@@ -25,6 +27,10 @@
 				axios(getImagesEndpointRoute(this.query))
 					.then(res => console.log(res))
 			}
+		},
+
+		components: {
+			ImageUploader
 		}
 	}
 </script>
