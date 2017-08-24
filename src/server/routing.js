@@ -30,16 +30,16 @@ export default (app) => {
 	})
 
 	app.get(getImagesEndpointRoute(), (req, res) => {
-		return res.json()
 		const category = req.params.category
-		Category.findOne({
+		Category.find({
 			name: category
 		}, (err, model) => {
 			if (err)
 				throw(err)
-			if (model)
-				res.json(model)
-			res.json({})
+			if (model) {
+				return res.json(model)
+			}
+			return res.json({})
 		})
 	})
 

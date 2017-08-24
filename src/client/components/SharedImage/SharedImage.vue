@@ -1,6 +1,6 @@
 <template>
   <div>
-		<img :height="size" src="../../placeholder.png"/>
+		<img :height="size" :src="getURL"/>
   </div>
 </template>
 
