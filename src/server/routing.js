@@ -30,7 +30,16 @@ export default (app) => {
 	})
 
 	app.get(getImagesEndpointRoute(), (req, res) => {
-		res.sendStatus(200)
+		const category = req.params.category
+		Category.findOne({
+			name: category
+		}, (err, model) => {
+			if (err)
+				throw(err)
+			if (model)
+				res.json(model)
+			res.json({})
+		})
 	})
 
 	app.post(createImageEndpointRoute(), uploader, (req, res, next) => {
