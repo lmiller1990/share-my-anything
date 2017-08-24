@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import findOrCreate from 'mongoose-find-or-create'
 
 const categorySchema = new mongoose.Schema({
 	name: {
@@ -7,6 +8,7 @@ const categorySchema = new mongoose.Schema({
 		unique: true
 	}
 })
+categorySchema.plugin(findOrCreate)
 
 const Category = mongoose.model('Category', categorySchema)
 
