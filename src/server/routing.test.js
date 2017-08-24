@@ -7,7 +7,6 @@ describe('/images', () => {
 	test('it should respond to the GET method', async () => {
 		const response = await request(app).get('/images/cats')
 
-		console.log(response.data)
 		expect(response.statusCode).toBe(200)
 	})
 })
