@@ -8,7 +8,7 @@ import Category from '../models/category'
 mongoose.Promise = global.Promise;
 
 beforeAll(() => {
-	return mongoose.connect(dburl, { useMongoClient: true })
+	mongoose.connect(dburl, { useMongoClient: true })
 })
 
 afterAll(() => {
@@ -16,17 +16,30 @@ afterAll(() => {
 })
 
 beforeEach(() => {
-	return Category.collection.drop()
+	Category.collection.drop(err => null)
 })
 
-test('creates a category', (done) => {
-	expect.assertions(1)
-	Category.findOrCreate({
-		name: 'cats'
-	}, (err, cat) => {
-		if (err)
-			throw(err)
-		expect(cat.name).toBe('cats')
-		done()
+test('creates a category with an image', (done) => {
+	expect.assertions(2)
+
+	const promise = () => { 
+		return new Promise((resolve, reject) => {
+			Category.findOrCreate({
+				name: 'cats'
+			}, (err, cat) => {
+				if (err)
+					reject(err)
+				resolve(cat)
+			})
+		}) 
+	}
+
+	promise().then((cat) => {
+		cat.images.push({ link: 'Some cat link' })
+		cat.save((err, catWithImage) => {
+			expect(catWithImage.name).toBe('cats')
+			expect(catWithImage.images.length).toBe(1)
+			done()
+		})
 	})
 })

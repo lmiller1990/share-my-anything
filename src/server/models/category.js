@@ -6,8 +6,13 @@ const categorySchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		unique: true
+	},
+	images: {
+		type: Array,
+		default: []
 	}
 })
+
 categorySchema.plugin(findOrCreate)
 
 const Category = mongoose.model('Category', categorySchema)
