@@ -37,7 +37,6 @@ test('creates a category with an image', (done) => {
   expect.assertions(2)
 
   const promise = () => { 
-    console.log('Here we go')
     return new Promise((resolve, reject) => {
       Category.create({
         name: 'cats'
