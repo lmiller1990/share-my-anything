@@ -6,6 +6,7 @@ const renderApp = (title) =>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
 	<title>${title}</title>
 	<link rel="stylesheet" href="${STATIC_PATH}/css/styles.css">
 </head>

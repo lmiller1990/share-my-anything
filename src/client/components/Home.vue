@@ -49,11 +49,11 @@
 </script>
 
 <style scoped>
-.main.banner.container {
+/*.main.banner.container {
 	border: 1px solid grey;
 	display: flex;
 	flex-direction: row;
 	font-size: 5em;
 	justify-content: space-around;
-}
+}*/
 </style>
