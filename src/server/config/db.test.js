@@ -18,11 +18,6 @@ afterAll(async () => {
 
 beforeEach(async () => {
 	await Category.remove({})
-  /*Category.collection.drop(err => {
-    if (err)
-      throw new Error(err)
-    done()
-  })*/
 })
 
 test('creates a category with an image', (done) => {
