@@ -2,13 +2,13 @@
  * @jest-environment node
  */
 import mongoose from 'mongoose'
-import { dburl } from './db'
+import { testdburl } from './db'
 import Category from '../models/category'
 
 mongoose.Promise = global.Promise;
 
 beforeAll((done) => {
-  mongoose.connect(dburl, { useMongoClient: true }, (err) => {
+  mongoose.connect(testdburl, { useMongoClient: true }, (err) => {
     if (err)
       throw new Error(err)
     // console.log('connected')

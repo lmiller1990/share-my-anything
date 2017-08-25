@@ -9,6 +9,7 @@ const renderApp = (title) =>
 	<meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
 	<title>${title}</title>
 	<link rel="stylesheet" href="${STATIC_PATH}/css/styles.css">
+	<link rel="stylesheet" href="${STATIC_PATH}/css/bootstrap.min.css">
 </head>
 <body>
 	<div>

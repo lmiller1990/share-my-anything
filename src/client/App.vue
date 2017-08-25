@@ -1,5 +1,5 @@
 <template>
-	<div class="main container">
+	<div id="main-body" class="jumbotron text-center">
 		<router-view></router-view>
 	</div>
 </template>
@@ -11,8 +11,9 @@
 </script>
 
 <style>
-.main.container {
-	padding-left: 2em;
-	padding-right: 2em;
+
+#main-body {
+	max-width: 968px;
+	margin: 0 auto !important;
 }
 </style>

@@ -1,16 +1,30 @@
 <template>
-  <div class="main banner container">
-		<div>
-			Share my
-		</div>
-		<input v-model="query" placeholder="cat" id="query-input" @keyup.enter="enterHandler">
+  <div>
+		<h1 class="jumbotron-header">Share my</h1>
+		<form class="form">
+			<input 
+				class="form-control form-control-lg"
+				v-model="query" 
+				placeholder="cat" 
+				id="query-input" 
+				@keyup.enter="enterHandler">
+			<button
+				class="form-control btn btn-primary btn-lg"
+				type="button"
+				@keyup.enter="enterHandler">
+				Search
+			</button>
+		</form>
 		<ImageUploader />
-		<SharedImage 
-			v-for="uuid in images"
-	 		key="uuid"
-			:uuid="uuid"
-			:size="150" 
-			:category="category" />
+		<div class="container">
+			<div class="row">
+				<SharedImage 
+					v-for="uuid in images"
+					key="uuid"
+					:uuid="uuid"
+					:category="category" />
+			</div>
+		</div>
   </div>
 </template>
 
@@ -26,8 +40,17 @@
 		data() {
 			return {
 				query: null,
-				images: [],
-				category: null
+				images: [
+					/*'810a5020-8982-11e7-aa12-cbbc4d0abdcb',
+					'810a5020-8982-11e7-aa12-cbbc4d0abdcb',
+					'810a5020-8982-11e7-aa12-cbbc4d0abdcb',
+					'810a5020-8982-11e7-aa12-cbbc4d0abdcb',
+					'810a5020-8982-11e7-aa12-cbbc4d0abdcb',
+					'810a5020-8982-11e7-aa12-cbbc4d0abdcb',
+					'810a5020-8982-11e7-aa12-cbbc4d0abdcb',
+					'810a5020-8982-11e7-aa12-cbbc4d0abdcb',*/
+				],
+				category: ''
 			}
 		},
 
@@ -35,6 +58,7 @@
 			enterHandler(e) {
 				axios(getImagesEndpointRoute(this.query))
 					.then(res => {
+						console.log('res', res)
 						this.category = res.data.name
 						this.images = res.data.images
 					})
@@ -49,11 +73,4 @@
 </script>
 
 <style scoped>
-/*.main.banner.container {
-	border: 1px solid grey;
-	display: flex;
-	flex-direction: row;
-	font-size: 5em;
-	justify-content: space-around;
-}*/
 </style>

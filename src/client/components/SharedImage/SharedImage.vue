@@ -1,6 +1,6 @@
 <template>
-  <div>
-		<img :height="size" :src="getURL"/>
+  <div class="col-sm-3">
+		<img class="fitted" :src="getURL"/>
   </div>
 </template>
 
@@ -18,10 +18,6 @@
 				type: String,
 				required: true
 			},
-			size: {
-				type: Number,
-				required: true
-			}
 		},
 
 		computed: {
@@ -33,4 +29,8 @@
 </script>
 
 <style scoped>
+.fitted {
+	max-width: 100%;
+	min-width: 100%;
+}
 </style>

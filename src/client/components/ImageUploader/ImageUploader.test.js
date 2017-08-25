@@ -4,10 +4,17 @@ import Vue from 'vue'
 
 describe('ImageUploader.vue', () => {
 	it('save should return a 200 status', () => {
-		const wrapper = shallow(ImageUploader)
+		const wrapper = mount(ImageUploader, {
+			propsData: {
+				imageChosen: true,
+				category: "something"
+			}
+		})
+		wrapper.update()
 		const saveMock = jest.fn()
 		wrapper.setMethods({ save: saveMock })
 
+		wrapper
 		wrapper.find('#save-button')[0].trigger('click')
 		expect(saveMock.mock.calls.length).toBe(1)
 	})

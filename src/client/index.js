@@ -1,10 +1,12 @@
 import 'babel-polyfill'
 
 import Vue from 'vue'
-import router from './router'
 
+import router from './router'
 import App from './App'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
+
+import 'bootstrap'
 
 new Vue({
 	el: '#app',

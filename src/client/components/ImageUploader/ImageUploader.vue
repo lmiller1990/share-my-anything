@@ -1,15 +1,39 @@
 <template>
   <div>
-		<div class="upload container">
-			<h4 class="upload form">
-				Img
-			</h4>
-			<form enctype="multipart/form-data">
-				<input type="file" id="image-button" name="image" @change="onImageChange">
-				<input type="text" v-model="category" name="category">
-				<input type="button" id="save-button" @click="save" value="Submit">
-			</form>
-		</div>
+		<form class="form-inline" enctype="multipart/form-data">
+			<div class="form-control">
+				<label class="btn btn-default">
+					Click to share yours!
+					<input type="file" 
+						id="image-button" name="image" 
+						@change="onImageChange" hidden>
+				</label>
+			</div>
+
+			<input 
+			  v-if="imageChosen" 
+				v-model="category" 
+				placeholder="category..."
+				class="form-control form-control-lg" 
+				name="category">
+
+			<button 
+				v-show="imageChosen && category"
+				id="save-button"
+				class="btn btn-default btn-lg"
+				@click="save">
+				Share
+			</button>
+
+			<!--<div>
+				<input type="text" class="form-control" v-model="category" name="category">
+			</div>
+
+			<div class="form-group">
+				<input class="form-control" type="button" id="save-button" @click="save" value="Submit">
+			</div>-->
+
+		</form>
   </div>
 </template>
 
@@ -34,8 +58,11 @@
 				const fileList = e.target.files
 				const fd = new FormData()
 				
-				if (!fileList.length) 
-					return;
+				if (!fileList.length) {
+					this.imageChosen = false
+					return
+				}
+				this.imageChosen = true
 
 				fd.append(fieldName, fileList[0], fileList[0].name)
 				this.formData = fd

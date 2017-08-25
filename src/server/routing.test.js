@@ -7,12 +7,12 @@ import Category from './models/category'
 import request from 'supertest'
 import app from './app'
 
-import { dburl } from './config/db'
+import { testdburl } from './config/db'
 
 mongoose.Promise = global.Promise;
 
 beforeAll((done) => {
-	mongoose.connect(dburl, { useMongoClient: true }, (err) => {
+	mongoose.connect(testdburl, { useMongoClient: true }, (err) => {
 		if (err)
 			throw new Error(err)
 		// console.log('connected')
