@@ -15,7 +15,7 @@ beforeAll((done) => {
 	mongoose.connect(dburl, { useMongoClient: true }, (err) => {
 		if (err)
 			throw new Error(err)
-		console.log('connected')
+		// console.log('connected')
 		done()
 	})
 })
@@ -24,7 +24,7 @@ afterAll((done) => {
 	mongoose.disconnect((err, db) => {
 		if (err)
 			throw new Error(err)
-		console.log('disconnected')
+		// console.log('disconnected')
 		done()
 	})
 })
@@ -59,5 +59,15 @@ test('it returns a category with two image uuids', (done) => {
 			expect(res.body.images.length).toBe(2)
 			done()
 		})
+	})
+})
+
+test('it returns an empty category', (done) => {
+	expect.assertions(2)
+
+	request(app).get('/images/empty').then(res => {
+		expect(res.body.name).toBe('empty')
+		expect(res.body.images.length).toBe(0)
+		done()
 	})
 })

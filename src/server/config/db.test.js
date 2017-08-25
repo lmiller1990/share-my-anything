@@ -11,7 +11,7 @@ beforeAll((done) => {
   mongoose.connect(dburl, { useMongoClient: true }, (err) => {
     if (err)
       throw new Error(err)
-    console.log('connected')
+    // console.log('connected')
     done()
   })
 })
@@ -20,7 +20,7 @@ afterAll((done) => {
   mongoose.disconnect((err, db) => {
     if (err)
        throw new Error(err)
-    console.log('disconnected')
+    // console.log('disconnected')
     done()
   })
 })
