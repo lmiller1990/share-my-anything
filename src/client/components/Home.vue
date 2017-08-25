@@ -1,5 +1,6 @@
 <template>
   <div>
+		<BsModal />
 		<SearchImageForm />
 		<!--<ImageUploader />-->
 		<div class="container">
@@ -18,6 +19,7 @@
 	import ImageUploader from './ImageUploader/ImageUploader.vue'
 	import SharedImage from './SharedImage/SharedImage.vue'
 	import SearchImageForm from './SearchImageForm.vue'
+	import BsModal from './BsModal.vue'
 
   export default {
     name: 'Home',
@@ -31,7 +33,8 @@
 		components: {
 			ImageUploader,
 			SharedImage,
-			SearchImageForm
+			SearchImageForm,
+			BsModal
 		}
 	}
 </script>

@@ -1,12 +1,20 @@
 <template>
-	<div id="main-body" class="jumbotron text-center">
-		<router-view></router-view>
+	<div>
+		<Navbar />
+		<div id="main-body" class="jumbotron text-center">
+			<router-view></router-view>
+		</div>
 	</div>
 </template>
 
 <script>
+	import Navbar from './components/Navbar.vue'
 	export default {
-		name: 'app'
+		name: 'app',
+
+		components: {
+			Navbar
+		}
 	}
 </script>
 
