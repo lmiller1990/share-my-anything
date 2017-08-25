@@ -5,7 +5,7 @@
 			<input 
 				class="form-control form-control-lg"
 				v-model="query" 
-				placeholder="cat" 
+				placeholder="cats, dogs, friends..." 
 				id="query-input" 
 				@keyup.enter="enterHandler">
 			<button
