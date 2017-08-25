@@ -5,12 +5,19 @@
 		</div>
 		<input v-model="query" placeholder="cat" id="query-input" @keyup.enter="enterHandler">
 		<ImageUploader />
+		<SharedImage 
+			v-for="uuid in images"
+	 		key="uuid"
+			:uuid="uuid"
+			:size="150" 
+			:category="category" />
   </div>
 </template>
 
 <script>
 	import axios from 'axios'
 	import ImageUploader from './ImageUploader/ImageUploader.vue'
+	import SharedImage from './SharedImage/SharedImage.vue'
 	import { getImagesEndpointRoute } from '../../shared/routes'
 
   export default {
@@ -18,19 +25,25 @@
 
 		data() {
 			return {
-				query: null
+				query: null,
+				images: [],
+				category: null
 			}
 		},
 
 		methods: {
 			enterHandler(e) {
 				axios(getImagesEndpointRoute(this.query))
-					.then(res => console.log(res))
+					.then(res => {
+						this.category = res.data.name
+						this.images = res.data.images
+					})
 			}
 		},
 
 		components: {
-			ImageUploader
+			ImageUploader,
+			SharedImage
 		}
 	}
 </script>
