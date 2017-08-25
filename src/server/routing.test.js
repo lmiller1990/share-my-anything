@@ -3,38 +3,24 @@
  */
 import 'babel-polyfill'
 import mongoose from 'mongoose'
+
 import Category from './models/category'
 import request from 'supertest'
 import app from './app'
-
 import { testdburl } from './config/db'
 
 mongoose.Promise = global.Promise;
 
-beforeAll((done) => {
-	mongoose.connect(testdburl, { useMongoClient: true }, (err) => {
-		if (err)
-			throw new Error(err)
-		// console.log('connected')
-		done()
-	})
+beforeAll(async () => {
+	await mongoose.connect(testdburl, { useMongoClient: true })
 })
 
-afterAll((done) => {
-	mongoose.disconnect((err, db) => {
-		if (err)
-			throw new Error(err)
-		// console.log('disconnected')
-		done()
-	})
+afterAll(async () => {
+	await mongoose.disconnect()
 })
 
-beforeEach((done) => {
-	Category.collection.drop(err => {
-		if (err)
-			throw new Error(err)
-		done()
-	})
+beforeEach(async () => {
+	await Category.remove({})
 })
 
 

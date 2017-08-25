@@ -4,33 +4,25 @@
 import mongoose from 'mongoose'
 import { testdburl } from './db'
 import Category from '../models/category'
+import 'babel-polyfill'
 
 mongoose.Promise = global.Promise;
 
-beforeAll((done) => {
-  mongoose.connect(testdburl, { useMongoClient: true }, (err) => {
-    if (err)
-      throw new Error(err)
-    // console.log('connected')
-    done()
-  })
+beforeAll(async () => {
+	await mongoose.connect(testdburl, { useMongoClient: true })
 })
 
-afterAll((done) => {
-  mongoose.disconnect((err, db) => {
-    if (err)
-       throw new Error(err)
-    // console.log('disconnected')
-    done()
-  })
+afterAll(async () => {
+	await mongoose.disconnect()
 })
 
-beforeEach((done) => {
-  Category.collection.drop(err => {
+beforeEach(async () => {
+	await Category.remove({})
+  /*Category.collection.drop(err => {
     if (err)
       throw new Error(err)
     done()
-  })
+  })*/
 })
 
 test('creates a category with an image', (done) => {
