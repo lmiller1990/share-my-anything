@@ -5,6 +5,8 @@ import { STATIC_PATH, WEB_PORT } from '../shared/config'
 import { isProd } from '../shared/util'
 import app from './app'
 
+mongoose.Promise = global.Promise;
+
 mongoose.connect(dburl, { useMongoClient: true })
 
 app.listen(WEB_PORT, () => 
