@@ -11,7 +11,7 @@ module.exports = {
 			ref: 'origin/master',
 			repo: 'git@github.com:lmiller1990/share-my-anything.git',
 			path: '/home/ubuntu/share-my-anything',
-			'post-deploy': 'npm install && npm prod:build pm2 startOrRestart ecosystem.config.js'
+			'post-deploy': 'yarn install && yarn prod:build && pm2 startOrRestart ecosystem.config.js'
 		}
 	}
 }
