@@ -20,7 +20,12 @@
 			ImageUploader
 		}
 	}
-	</script>
+</script>
 
-	<style scoped>
-	</style>
+<style scoped>
+.modal-dialog {
+	max-width: 60%;
+	padding-top: 5%;
+	margin: auto;
+}
+</style>

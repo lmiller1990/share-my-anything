@@ -1,24 +1,25 @@
 <template>
   <div id="upload-form">
-		<form class="form-inline" enctype="multipart/form-data">
-				<label class="btn btn-default btn-primary">
-					Click to share yours!
-					<input type="file" 
-						id="image-button" name="image" 
-						@change="onImageChange" hidden>
-				</label>
+		<form class="form" enctype="multipart/form-data">
+			<label class="btn btn-default btn-primary">
+				Click to share yours!
+				<input type="file" 
+					id="image-button" name="image" 
+					@change="onImageChange" hidden>
+			</label>
 
 			<input 
-			  v-if="imageChosen" 
+				v-if="imageChosen" 
 				v-model="category" 
 				placeholder="category..."
-				class="form-control form-control-lg" 
+				id="category-input"
+				class="form-control" 
 				name="category">
 
 			<button 
 				v-show="imageChosen && category"
 				id="save-button"
-				class="btn btn-default btn-lg"
+				class="btn btn-default btn"
 				@click="save">
 				Share
 			</button>
@@ -84,5 +85,12 @@
 <style scoped>
 #upload-form {
 	padding: 7px;
+}
+.btn {
+	width: 100%;
+}
+
+#category-input {
+	margin-bottom: 8px;
 }
 </style>
