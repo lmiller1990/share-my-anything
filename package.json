@@ -7,7 +7,7 @@
 		"prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
 		"prod:stop": "pm2 delete server",
 		"precommit": "yarn test",
-		"prepush": "yarn test",
+		"prepush": "yarn test && yarn prod:build",
 		"test": "jest"
 	},
 	"dependencies": {

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import { dburl } from './config/db'
 
-import { STATIC_PATH, WEB_PORT } from '../shared/config'
+import { WEB_PORT } from '../shared/config'
 import { isProd } from '../shared/util'
 import app from './app'
 
