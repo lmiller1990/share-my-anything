@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	import { AWS_BUCKET_ROOT_URL } from '../../../shared/config'
+	import { AWS_BUCKET_ROOT_URL } from '../../shared/config'
   export default {
     name: 'SharedImage',
 

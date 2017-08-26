@@ -1,4 +1,4 @@
-import SharedImage from './SharedImage.vue'
+import SharedImage from '../SharedImage.vue'
 import { shallow } from 'avoriaz'
 import { AWS_BUCKET_ROOT_URL } from '../../../shared/config.js'
 import Vue from 'vue'

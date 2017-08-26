@@ -1,4 +1,4 @@
-import ImageUploader from './ImageUploader.vue'
+import ImageUploader from '../ImageUploader.vue'
 import { shallow, mount } from 'avoriaz'
 import Vue from 'vue'
 

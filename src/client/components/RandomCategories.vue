@@ -1,5 +1,5 @@
 <template>
-	<div style="margin-top: 2px;">
+	<div style="margin-top: 4px; margin-bottom: 4px;">
 		<CategoryLabel 
 			v-for="category in randomCategories" :category="category.name" key="category._id" />
   </div>

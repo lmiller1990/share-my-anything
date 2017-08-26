@@ -43,7 +43,7 @@ const actions = {
 
 	loadRandomCategories({commit}) {
 		return new Promise((resolve, reject) => {
-			axios(getCategoriesEndpointRoute(2))
+			axios(getCategoriesEndpointRoute(8))
 				.then(res => resolve(res))
 				.catch(err => reject(err))
 		})

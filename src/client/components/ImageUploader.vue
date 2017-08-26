@@ -1,14 +1,12 @@
 <template>
-  <div>
+  <div id="upload-form">
 		<form class="form-inline" enctype="multipart/form-data">
-			<div class="form-control">
-				<label class="btn btn-default">
+				<label class="btn btn-default btn-primary">
 					Click to share yours!
 					<input type="file" 
 						id="image-button" name="image" 
 						@change="onImageChange" hidden>
 				</label>
-			</div>
 
 			<input 
 			  v-if="imageChosen" 
@@ -25,21 +23,13 @@
 				Share
 			</button>
 
-			<!--<div>
-				<input type="text" class="form-control" v-model="category" name="category">
-			</div>
-
-			<div class="form-group">
-				<input class="form-control" type="button" id="save-button" @click="save" value="Submit">
-			</div>-->
-
 		</form>
   </div>
 </template>
 
 <script>
 	import 'isomorphic-fetch'
-	import { createImageEndpointRoute } from '../../../shared/routes'
+	import { createImageEndpointRoute } from '../../shared/routes'
 
   export default {
     name: 'ImageUploader',
@@ -70,7 +60,8 @@
 				return fd
 			},
 
-			save() {
+			save(evt) {
+				evt.preventDefault()
 				this.formData.append('category', this.category)
 
 				fetch(createImageEndpointRoute(), { 
@@ -91,4 +82,7 @@
 </script>
 
 <style scoped>
+#upload-form {
+	padding: 7px;
+}
 </style>

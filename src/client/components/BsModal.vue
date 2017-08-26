@@ -5,7 +5,6 @@
 			 aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
-				<h4>Share yours, too!</h4>
 				<ImageUploader />
 			</div>
 		</div>
@@ -13,7 +12,7 @@
 </template>
 
 <script>
-	import ImageUploader from './ImageUploader/ImageUploader.vue'
+	import ImageUploader from './ImageUploader.vue'
 	export default {
 		name: 'BsModal',
 

@@ -1,5 +1,5 @@
 import { shallow } from 'avoriaz'
-import SearchImageForm from './SearchImageForm.vue'
+import SearchImageForm from '../SearchImageForm.vue'
 
 test('enterHandler should not be called', () => {
 	const wrapper = shallow(SearchImageForm)

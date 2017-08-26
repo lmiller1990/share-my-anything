@@ -15,8 +15,7 @@
 </template>
 
 <script>
-	import ImageUploader from './ImageUploader/ImageUploader.vue'
-	import SharedImage from './SharedImage/SharedImage.vue'
+	import SharedImage from './SharedImage.vue'
 	import SearchImageForm from './SearchImageForm.vue'
 	import BsModal from './BsModal.vue'
 
@@ -30,7 +29,6 @@
 		},
 
 		components: {
-			ImageUploader,
 			SharedImage,
 			SearchImageForm,
 			BsModal

@@ -11,7 +11,7 @@
 		<button
 			class="form-control btn btn-primary btn-lg"
 			type="button"
-			@keyup.enter="enterHandler">
+			@click="enterHandler">
 			Search
 		</button>
 		<RandomCategories />
@@ -33,6 +33,7 @@
 
 		methods: {
 			enterHandler(e) {
+				e.preventDefault()
 				this.$store.dispatch('loadCategory', {
 					category: this.category
 				})

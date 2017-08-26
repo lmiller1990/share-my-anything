@@ -1,4 +1,4 @@
-import Home from './Home.vue'
+import Home from '../Home.vue'
 import { shallow, mount } from 'avoriaz'
 import Vue from 'vue'
 import Vuex from 'vuex'
