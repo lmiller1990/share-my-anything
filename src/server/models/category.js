@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import findOrCreate from 'mongoose-find-or-create'
+import random from 'mongoose-simple-random'
 
 const categorySchema = new mongoose.Schema({
 	name: {
@@ -13,6 +14,7 @@ const categorySchema = new mongoose.Schema({
 	}
 })
 
+categorySchema.plugin(random)
 categorySchema.plugin(findOrCreate)
 
 const Category = mongoose.model('Category', categorySchema)

@@ -2,7 +2,6 @@
   <div>
 		<BsModal />
 		<SearchImageForm />
-		<!--<ImageUploader />-->
 		<div class="container">
 			<div class="row">
 				<SharedImage 

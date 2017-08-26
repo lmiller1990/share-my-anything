@@ -7,9 +7,13 @@ import uuid from 'uuid/v1'
 
 import { APP_NAME } from '../shared/config'
 import { uploadToS3, uploader } from './middleware/imageUploadMiddleware'
-import { createImageEndpointRoute, getImagesEndpointRoute } from '../shared/routes'
-import Category from './models/category'
+import { 
+	createImageEndpointRoute, 
+	getImagesEndpointRoute,
+	getCategoriesEndpointRoute
+} from '../shared/routes'
 
+import Category from './models/category'
 import renderApp from './render-app'
 
 const getCategory = (category) => {
@@ -40,6 +44,18 @@ export default (app) => {
 				return res.json(model)
 			}
 			return res.json({})
+		})
+	})
+
+	app.get(getCategoriesEndpointRoute(), (req, res) => {
+		const count = req.query.count
+		if (!count) 
+			return res.json([])
+
+		Category.findRandom({}, {}, {limit: count}, (err, categories) => {
+			if (!err) {
+				return res.json(categories)
+			}
 		})
 	})
 

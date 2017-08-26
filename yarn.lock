@@ -4237,6 +4237,10 @@ mongoose-find-or-create@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/mongoose-find-or-create/-/mongoose-find-or-create-1.3.1.tgz#415a4a7d1094a9b56ca42b0366926f05aef0e362"
 
+mongoose-simple-random@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/mongoose-simple-random/-/mongoose-simple-random-0.4.1.tgz#09054d8555826730209a7405b1d73cb4a8f91aa3"
+
 mongoose@^4.11.8:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.11.8.tgz#0d618ad22d33ed8d2497c060d2cad6491eb6a6a9"

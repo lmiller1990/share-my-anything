@@ -1,7 +1,8 @@
 import jest from 'jest'
 import { 
 	createImageEndpointRoute,
-	getImagesEndpointRoute
+	getImagesEndpointRoute,
+	getCategoriesEndpointRoute
 } from './routes'
 
 test('uploadImageEndpoint', () => {
@@ -11,4 +12,8 @@ test('uploadImageEndpoint', () => {
 test('getImagesEndpoint', () => {
 	expect(getImagesEndpointRoute()).toBe('/images/:category')
 	expect(getImagesEndpointRoute('cats')).toBe('/images/cats')
+})
+
+test('getCategoriesEndpoint', () => {
+	expect(getCategoriesEndpointRoute(2)).toBe('/categories?count=2')
 })

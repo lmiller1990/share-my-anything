@@ -36,6 +36,19 @@ test('it returns a category with two image uuids', async () => {
 	expect(categoryWithImages.body.images.length).toBe(2)
 })
 
+test('it returns a number of random categories', async () => {
+	expect.assertions(1)
+
+	await Category.collection.insert([
+		{ name: 'a' },
+		{ name: 'b' },
+		{ name: 'c' }
+	])
+
+	let res = await request(app).get('/categories?count=2')
+	expect(res.body.length).toBe(2)
+})
+
 test('it returns an empty category', async () => {
 	expect.assertions(2)
 

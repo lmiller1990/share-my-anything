@@ -14,18 +14,20 @@
 			@keyup.enter="enterHandler">
 			Search
 		</button>
+		<RandomCategories />
 	</form>
 </div>
 </template>
 
 <script>
 	import axios from 'axios'
+	import RandomCategories from './RandomCategories.vue'
 	import * as types from '../store/mutation-types'
 
 	export default {
 		data() {
 			return {
-				category: null
+				category: ''
 			}
 		},
 
@@ -35,6 +37,10 @@
 					category: this.category
 				})
 			}
+		},
+
+		components: {
+			RandomCategories
 		}
 	}
 </script>
