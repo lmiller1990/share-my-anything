@@ -23,37 +23,23 @@ beforeEach(async () => {
 	await Category.remove({})
 })
 
-
-test('it returns a category with two image uuids', (done) => {
+test('it returns a category with two image uuids', async () => {
 	expect.assertions(2)
-	const createCategories = (categoryName) => {
-		return new Promise((resolve, reject) => {
-			Category.create({
-				name: categoryName,
-				images: ['uuid1', 'uuid2']
-			}, (err, model) => {
-				if (err) 
-					reject(err)
-				resolve(model)
-			})
-		})
-	}
 
-	createCategories('cats').then(() => {
-		request(app).get('/images/cats').then(res => {
-			expect(res.body.name).toBe('cats')
-			expect(res.body.images.length).toBe(2)
-			done()
-		})
+	const model = await Category.create({
+		name: 'cats',
+		images: ['a', 'b']
 	})
+
+	const categoryWithImages = await request(app).get('/images/cats')
+	expect(categoryWithImages.body.name).toBe('cats')
+	expect(categoryWithImages.body.images.length).toBe(2)
 })
 
-test('it returns an empty category', (done) => {
+test('it returns an empty category', async () => {
 	expect.assertions(2)
 
-	request(app).get('/images/empty').then(res => {
-		expect(res.body.name).toBe('empty')
-		expect(res.body.images.length).toBe(0)
-		done()
-	})
+	let res = await request(app).get('/images/empty')
+	expect(res.body.name).toBe('empty')
+	expect(res.body.images.length).toBe(0)
 })
