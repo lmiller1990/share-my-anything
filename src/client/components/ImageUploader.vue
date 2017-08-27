@@ -24,7 +24,13 @@
 				Share
 			</button>
 
+			<div v-if="loading"
+				class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+				aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+			</div>
+
 		</form>
+
   </div>
 </template>
 
@@ -40,7 +46,8 @@
 			return {
 				imageChosen: false,
 				formData: null,
-				category: null
+				category: '',
+				loading: false
 			}
 		},
 
@@ -64,11 +71,15 @@
 
 			save(evt) {
 				evt.preventDefault()
+				this.loading = true
 
 				this.formData.append('category', this.category)
 				axios.post(createImageEndpointRoute(), 
 					this.formData
-				)
+				).then(() => {
+					this.loading = false
+					$('#uploader-modal').modal('hide')
+				})
 			},
 		}
   }
@@ -84,5 +95,9 @@
 
 #category-input {
 	margin-bottom: 8px;
+}
+
+.progress-bar {
+	margin-top: 8px;
 }
 </style>

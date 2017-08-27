@@ -1,6 +1,7 @@
 <template>
 	<div class="modal fade bd-example-modal" 
 			 tabindex="-1" role="dialog" 
+			 id="uploader-modal"
 			 aria-labelledby="myLargeModalLabel"
 			 aria-hidden="true">
 		<div class="modal-dialog modal-lg">
