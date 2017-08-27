@@ -4,6 +4,7 @@
 import fs from 'fs'
 import mongoose from 'mongoose'
 import uuid from 'uuid/v1'
+import shuffle from 'shuffle-array'
 
 import { APP_NAME } from '../shared/config'
 import { uploadToS3, uploader } from './middleware/imageUploadMiddleware'
@@ -41,6 +42,7 @@ export default (app) => {
 			if (err)
 				throw(err)
 			if (model) {
+				shuffle(model.images)
 				return res.json(model)
 			}
 			return res.json({})
