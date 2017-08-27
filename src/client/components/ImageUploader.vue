@@ -19,7 +19,7 @@
 			<button 
 				v-show="imageChosen && category"
 				id="save-button"
-				class="btn btn-default btn"
+				class="btn btn-default btn-primary"
 				@click="save">
 				Share
 			</button>
@@ -30,6 +30,7 @@
 
 <script>
 	import 'isomorphic-fetch'
+	import axios from 'axios'
 	import { createImageEndpointRoute } from '../../shared/routes'
 
   export default {
@@ -63,20 +64,11 @@
 
 			save(evt) {
 				evt.preventDefault()
-				this.formData.append('category', this.category)
 
-				fetch(createImageEndpointRoute(), { 
-					method: 'POST', 
-					body: this.formData
-				})
-				.then((res) => {
-					if (!res.ok) throw Error('Error', res)
-					return res.status
-				})
-				.then((data) => {
-					console.log(data)
-					return data
-				})
+				this.formData.append('category', this.category)
+				axios.post(createImageEndpointRoute(), 
+					this.formData
+				)
 			},
 		}
   }
