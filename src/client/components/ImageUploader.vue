@@ -35,9 +35,10 @@
 </template>
 
 <script>
-	import 'isomorphic-fetch'
 	import axios from 'axios'
+	import * as types from '../store/mutation-types'
 	import { createImageEndpointRoute } from '../../shared/routes'
+	import 'babel-polyfill' // for await/async.
 
   export default {
     name: 'ImageUploader',
@@ -69,18 +70,17 @@
 				return fd
 			},
 
-			save(evt) {
+			async save(evt) {
 				evt.preventDefault()
 				this.loading = true
-
 				this.formData.append('category', this.category)
-				axios.post(createImageEndpointRoute(), 
-					this.formData
-				).then(() => {
-					this.loading = false
-					$('#uploader-modal').modal('hide')
-				})
-			},
+
+				await axios.post(createImageEndpointRoute(), this.formData)
+
+				this.loading = false
+				this.$store.commit(types.DISPLAY_FLASH, true)
+				$('#uploader-modal').modal('hide')
+			}
 		}
   }
 </script>

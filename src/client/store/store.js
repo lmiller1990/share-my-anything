@@ -10,8 +10,7 @@ import {
 Vue.use(Vuex)
 
 const state = {
-	loadingImagesStatus: null,
-	query: null,
+	displayFlash: false,
 	category: {name: '', images: []}
 }
 
@@ -20,16 +19,8 @@ const mutations = {
 		state.category = category
 	},
 
-	[types.GET_IMAGES_PENDING] (state) {
-		state.loadingImagesStatus = true
-	},
-
-	[types.GET_IMAGES_SUCCESS] (state) {
-		state.loadingImagesStatus = false
-	},
-
-	[types.GET_IMAGES_FAILURE] (state) {
-		state.loadingImagesStatus = false
+	[types.DISPLAY_FLASH] (state, visible) {
+		state.displayFlash = visible
 	}
 }
 

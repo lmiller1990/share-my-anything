@@ -1,26 +1,26 @@
 <template>
 	<div>
-	<h1 class="jumbotron-header">Share my</h1>
-	<form class="form">
-		<div class="form-group">
-		<input 
-			class="form-control form-control-lg"
-			v-model="category" 
-			placeholder="cats, dogs, friends..." 
-			id="query-input" 
-			@keyup.enter="enterHandler">
-		</div>
-		<div class="form-group">
-		<button
-			class="form-control btn btn-primary btn-lg"
-			type="button"
-			@click="enterHandler">
-			Search
-		</button>
-		</div>
-		<RandomCategories />
-	</form>
-</div>
+		<h1 class="jumbotron-header">Share my</h1>
+		<form class="form">
+			<div class="form-group">
+			<input 
+				class="form-control form-control-lg"
+				v-model="category" 
+				placeholder="cats, dogs, friends..." 
+				id="query-input" 
+				@keyup.enter="enterHandler">
+			</div>
+			<div class="form-group">
+			<button
+				class="form-control btn btn-primary btn-lg"
+				type="button"
+				@click="enterHandler">
+				Search
+			</button>
+			</div>
+			<RandomCategories />
+		</form>
+	</div>
 </template>
 
 <script>
