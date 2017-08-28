@@ -4,6 +4,7 @@
 		<SearchImageForm />
 		<div class="container">
 			<div class="row">
+				<Category />
 				<SharedImage 
 					v-for="uuid in category.images"
 					key="uuid"
@@ -16,6 +17,7 @@
 
 <script>
 	import SharedImage from './SharedImage.vue'
+	import Category from './Category.vue'
 	import SearchImageForm from './SearchImageForm.vue'
 	import BsModal from './BsModal.vue'
 
@@ -31,7 +33,8 @@
 		components: {
 			SharedImage,
 			SearchImageForm,
-			BsModal
+			BsModal,
+			Category
 		}
 	}
 </script>
