@@ -8,7 +8,23 @@
 
 <script>
   export default {
-    name: 'Category'
+    name: 'Category',
+
+		created() {
+			this.$store.dispatch('loadCategory', {
+				category: this.$route.params.category
+			})
+		},
+
+		watch: {
+		  /*'$route' (to, from) {
+				if (to.params.category) {
+					this.$store.dispatch('loadCategory', {
+						category: to.params.category
+					})
+				}
+			}*/
+		}
   }
 </script>
 
