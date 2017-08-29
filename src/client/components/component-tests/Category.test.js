@@ -11,6 +11,7 @@ describe('Category.vue', () => {
 		router.push({ name: 'category', params: { category: 'Cat' } })
 		wrapper.update()
 
-		expect(wrapper.find('#category-header')[0].text().trim()).toBe('Category: Cat')
+		expect(wrapper.find('#category-header')[0].text().trim())
+			.toBe('Category: Cat')
 	})
 })
