@@ -80,7 +80,10 @@
 				this.loading = false
 				this.$store.commit(types.DISPLAY_FLASH, true)
 				$('#uploader-modal').modal('hide')
-				this.$router.push({ name: 'category', params: { category: this.category } })
+				this.$store.dispatch('loadCategory', {
+					category: this.category
+				})
+				// this.$router.push({ name: 'category', params: { category: this.category } })
 			}
 		}
   }

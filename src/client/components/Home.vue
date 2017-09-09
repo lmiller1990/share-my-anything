@@ -29,23 +29,6 @@
 			}
 		},
 
-		watch: {
-		  '$route' (to, from) {
-				if (to.params.category) {
-					console.log(`Fetching ${this.$route.params.category}`)
-					this.$store.dispatch('loadCategory', {
-						category: this.$route.params.category
-					})
-				} else {
-					this.$store.commit(SET_CATEGORY, { 
-						category: {
-							images: []
-						}
-					})
-				}
-			}
-		},
-
 		components: {
 			SharedImage,
 			SearchImageForm,
