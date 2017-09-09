@@ -36,6 +36,7 @@ export default (app) => {
 
 	app.get(getImagesEndpointRoute(), (req, res) => {
 		const category = req.params.category
+		console.log('Finding or creating', category)
 		Category.findOrCreate({
 			name: category
 		}, (err, model) => {

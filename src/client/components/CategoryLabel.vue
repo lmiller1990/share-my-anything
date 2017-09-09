@@ -17,8 +17,8 @@
 
 		methods: {
 			handleClick(e) {
-				this.$store.dispatch('loadCategory', {
-					category: this.category
+				this.$router.push({ 
+					name: 'category', params: { category: this.category } 
 				})
 			}
 		}

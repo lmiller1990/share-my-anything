@@ -21,12 +21,17 @@ const mutations = {
 
 	[types.DISPLAY_FLASH] (state, visible) {
 		state.displayFlash = visible
+
+		setTimeout(() => {
+			state.displayFlash = false
+		}, 2000)
 	}
 }
 
 const actions = {
 	loadCategory({commit}, {category}) {
-		axios(getImagesEndpointRoute(category))
+		console.log('here ....')
+		return axios(getImagesEndpointRoute(category))
 		.then(res => {
 			commit(types.SET_CATEGORY, {category: res.data})
 		})

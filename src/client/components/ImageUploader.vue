@@ -80,6 +80,7 @@
 				this.loading = false
 				this.$store.commit(types.DISPLAY_FLASH, true)
 				$('#uploader-modal').modal('hide')
+				this.$router.push({ name: 'category', params: { category: this.category } })
 			}
 		}
   }
@@ -89,6 +90,7 @@
 #upload-form {
 	padding: 7px;
 }
+
 .btn {
 	width: 100%;
 }

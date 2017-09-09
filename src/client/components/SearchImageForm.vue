@@ -8,12 +8,12 @@
 				v-model="category" 
 				placeholder="cats, dogs, friends..." 
 				id="query-input" 
-				@keyup.enter="enterHandler">
+				@keydown.enter="enterHandler">
 			</div>
 			<div class="form-group">
 			<button
 				class="form-control btn btn-primary btn-lg"
-				type="button"
+				type="submit"
 				@click="enterHandler">
 				Search
 			</button>
@@ -38,9 +38,12 @@
 		methods: {
 			enterHandler(e) {
 				e.preventDefault()
-				this.$store.dispatch('loadCategory', {
-					category: this.category
-				})
+				if (this.category.length > 0) {
+					console.log(`Loading ${this.category}`)
+					this.$store.dispatch('loadCategory', {
+						category: this.category
+					})
+				}
 			}
 		},
 
