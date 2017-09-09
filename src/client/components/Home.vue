@@ -4,7 +4,6 @@
 		<SearchImageForm />
 		<div class="container">
 			<div class="row">
-				<Category />
 				<SharedImage 
 					v-for="uuid in category.images"
 					key="uuid"
